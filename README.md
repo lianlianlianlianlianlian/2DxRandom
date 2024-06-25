@@ -12,6 +12,7 @@
 
 ## 展示图
 
+<img width="1870" alt="image" src="https://github.com/lianlianlianlianlianlian/2DxRandom/assets/36120596/8f6385f7-9846-445a-9340-0085970805c1">
 
 
 ## 架构
