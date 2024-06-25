@@ -63,5 +63,10 @@ location /mobile {
     rewrite ^/mobile/$ /mobile.php last;
     rewrite ^/mobile$ /mobile.php last;
 }
+
+location /4k {
+    rewrite ^/4k/$ /4k.php last;
+    rewrite ^/4k$ /4k.php last;
+}
 ```
 
