@@ -26,7 +26,7 @@ $currentDate = date('Y-m-d');
 // 检查是否需要更新图片
 if ($lastUpdated != $currentDate || !file_exists($lastImgPath)) {
     // 获取符合条件的图片列表
-    $img_list = glob('random/*.{gif,jpg,png,webp}', GLOB_BRACE);
+    $img_list = glob('Random/*.{gif,jpg,png,webp}', GLOB_BRACE);
 
     if (!empty($img_list)) {
         // 随机选择一张图片

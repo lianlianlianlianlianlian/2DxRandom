@@ -1,6 +1,6 @@
 <?php
 // 指定图片目录的相对路径
-$img_dir = 'mb/';
+$img_dir = 'Mobile/';
 
 // 获取符合条件的图片列表
 $img_list = glob($img_dir . '*.{gif,jpg,png,webp}', GLOB_BRACE);
