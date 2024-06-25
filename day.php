@@ -35,9 +35,9 @@ if ($lastUpdated != $currentDate || !file_exists($lastImgPath)) {
         // 更新图片路径
         $lastImgPath = $img_url;
 
-        // 将当前日期和图片路径写入 last_updated.txt 文件
+        // 将当前日期和图片路径写入 day_last_updated.txt 文件
         $data = $currentDate . "\n" . $img_url;
-        file_put_contents('output/random_last_updated.txt', $data);
+        file_put_contents('output/day_last_updated.txt', $data);
     } else {
         echo 'No images found in the random folder';
         exit();

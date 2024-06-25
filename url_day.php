@@ -1,19 +1,9 @@
 <?php
-// 读取 last_updated.txt 文件中的数据
-$data = file_get_contents('last_updated.txt');
-
-if ($data) {
-    // 按换行符分割数据
-    $dataArray = explode("\n", $data);
-
-    // 获取日期和 URL
-    $lastUpdated = $dataArray[0];
-    $lastUrl = $dataArray[1];
-} else {
-    // 如果文件为空，则设置默认值
-    $lastUpdated = '';
-    $lastUrl = '';
-}
+// 设置时区为上海
+date_default_timezone_set('Asia/Shanghai');
+// 设置缓存有效期为一天
+$expires = 60 * 60 * 24; // 1 day
+header('Cache-Control: max-age=' . $expires);
 
 // 获取当前日期
 $currentDate = date('Y-m-d');
@@ -28,15 +18,18 @@ if ($lastUpdated != $currentDate) {
 
     // 更新图片操作...
 
-    // 将当前日期和跳转的 URL 写入 last_updated.txt 文件
-    $data = $currentDate . "\n" . $currentUrl;
-    file_put_contents('last_updated.txt', $data);
+    // 将当前日期和URL写入url/day_last_updated.txt文件
+    file_put_contents('url/day_last_updated.txt', $currentDate . ' ' . $currentUrl);
 
     // 跳转到当前 URL
     header('Location: ' . $currentUrl);
     exit();
 } else {
     // 使用上次跳转的 URL 进行操作...
+    // 读取url/day_last_updated.txt文件
+    $lastUpdatedData = file_get_contents('url/day_last_updated.txt');
+    // 分割日期和URL
+    list($lastUpdatedDate, $lastUrl) = explode(' ', $lastUpdatedData);
     // 跳转到上次 URL
     header('Location: ' . $lastUrl);
     exit();
