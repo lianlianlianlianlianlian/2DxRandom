@@ -1,38 +1,66 @@
 # 2DXRANDOM
 
-#### 介绍
-二次元随机图
+## 介绍
 
-#### 软件架构
-软件架构说明
+这是一个由PHP构建的随机图框架。
+网上看到很多大佬都有属于自己的每日一图，随机图API，但是他们没有开源，我在GIthub上也没有找到令我满意的开源项目，所以自己利用GPT4，一起写了一个，现已在Github和Gitee开源。
 
+项目已完成：
 
-#### 安装教程
+1. 调用本地目录的图片
+2. 调用外部URL的图片
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 展示图
 
 
-#### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
-# 2DxRandom
+## 架构
+
+1. HTML 
+2. PHP
+
+## 使用说明
+
+1. 
+2.  
+3.  
+4.  
+5.  
+6. 
+
+## Nginx伪静态
+
+这样设置可以让域名后面不用带.php 即可调用。
+
+```
+location /random {
+    rewrite ^/random/$ /random.php last;
+    rewrite ^/random$ /random.php last;
+}
+
+location /day {
+    rewrite ^/day/$ /day.php last;
+    rewrite ^/day$ /day.php last;
+}
+
+location /url_day {
+    rewrite ^/url_day/$ /url_day.php last;
+    rewrite ^/url_day$ /url_day.php last;
+}
+
+location /url_random {
+    rewrite ^/url_random/$ /url_random.php last;
+    rewrite ^/url_random$ /url_random.php last;
+}
+
+location /gif {
+    rewrite ^/gif/$ /gif.php last;
+    rewrite ^/gif$ /gif.php last;
+}
+
+location /mobile {
+    rewrite ^/mobile/$ /mobile.php last;
+    rewrite ^/mobile$ /mobile.php last;
+}
+```
+
