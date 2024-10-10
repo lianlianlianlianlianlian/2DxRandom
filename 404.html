@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            color: #333;
+            overflow: hidden;
+            user-select: none; /* 禁止选择文本 */
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+            animation: fadeIn 1.5s ease-in-out;
+            user-select: none; /* 禁止选择文本 */
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ff8080;
+            text-shadow: 0 0 20px rgba(255, 128, 128, 0.7);
+            animation: pulseGlow 2s infinite alternate;
+            user-select: none; /* 禁止选择文本 */
+        }
+
+        .error-code {
+            font-size: 10em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ff8080;
+            position: relative;
+            text-shadow: 0 0 20px rgba(255, 128, 128, 0.7);
+            animation: pulseGlow 2s infinite alternate;
+            user-select: none; /* 禁止选择文本 */
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #555;
+            animation: fadeIn 2s ease-in-out;
+            user-select: none; /* 禁止选择文本 */
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #ff8080;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(255, 128, 128, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            animation: fadeIn 2.5s ease-in-out;
+            user-select: none; /* 禁止选择文本 */
+        }
+
+        a:hover {
+            background-color: #ff6666;
+            box-shadow: 0 10px 20px rgba(255, 128, 128, 0.5);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 128, 128, 0.5);
+                transform: scale(1);
+            }
+            100% {
+                text-shadow: 0 0 40px rgba(255, 128, 128, 1);
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>what the hell!</h1>
+        <div class="error-code">404</div>
+        <p>找不到要查询的页面</p>
+        <p>请返回首页或返回首页</p>
+        <a href="/" id="homeButton">返回首页</a>
+    </div>
+
+    <audio id="pageLoadAudio" src="/mp3/aminuosi.mp3"></audio>
+    <audio id="hoverAudio" src="/mp3/manbo.mp3"></audio>
+    <audio id="clickAudio" src="/mp3/wow.mp3"></audio>
+
+    <script>
+        // 检测是否为移动设备
+        function isMobileDevice() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+        if (!isMobileDevice()) {
+            // 桌面端执行以下代码
+            document.getElementById("homeButton").addEventListener("mouseover", function() {
+                var hoverAudio = document.getElementById("hoverAudio");
+                hoverAudio.play();
+            });
+
+            // 点击页面上除按钮之外的地方播放aminuosi
+            document.body.addEventListener("click", function(event) {
+                if (event.target.id !== "homeButton") {
+                    var pageLoadAudio = document.getElementById("pageLoadAudio");
+                    pageLoadAudio.play();
+                }
+            });
+        } else {
+            // 移动端点击页面上除按钮之外的地方播放manbo
+            document.body.addEventListener("click", function(event) {
+                if (event.target.id !== "homeButton") {
+                    var hoverAudio = document.getElementById("hoverAudio");
+                    hoverAudio.play();
+                }
+            });
+        }
+
+        // 所有设备都执行点击播放音频
+        document.getElementById("homeButton").addEventListener("click", function(event) {
+            event.preventDefault(); // 阻止默认的链接跳转
+            var clickAudio = document.getElementById("clickAudio");
+            clickAudio.play();
+
+            // 在音频播放完后跳转到首页
+            clickAudio.onended = function() {
+                window.location.href = "/";
+            };
+        });
+    </script>
+</body>
+</html>

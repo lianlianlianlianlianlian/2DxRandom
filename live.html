@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Preview丨Dark.Lotus.Random
+</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: url('https://img.darklotus.cn/day') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            text-align: center;
+            color: #ff8080;
+            text-shadow: 1px 1px 1px #ffd1d1
+            padding-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        
+                h2 {
+            font-size: 38px;
+            margin: 0;
+            text-align: center;
+            color: #ff8080;
+            text-shadow: 1px 1px 1px #ffd1d1
+            padding-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 16px; /* 缩小内边距 */
+	border-radius: 16px; /* 缩小圆角半径 */
+	background-color: rgba(255, 255, 255, 0.8);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding:24px;
+	border-radius:36px;
+	z-index: 1; /* 添加 z-index 属性 */
+}
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.8em;
+            color: #ff2d2db3;
+        }
+
+        .card-content p {
+            margin: 0 0 15px;
+            color: #505050;
+        }
+
+        .card-content a {
+            display: block;
+            text-align: center;
+            background-color: rgba(255, 128, 128, 0.8);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 50%;
+            text-decoration: none;
+            margin: 0 auto;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .card-content a:hover {
+            background-color: #ff8080;
+            transform: scale(1.1);
+        }
+
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+.footer {
+    margin-top: auto;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.0); /* 可选：添加背景色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer p a {
+	color: #ff8080;
+	text-decoration: none;
+	font-family: 'Dancing Script', cursive;
+}
+
+.footer p a:hover {
+	color: #ff6060;
+}
+
+.footer p {
+	display: inline-block;
+	margin: 0;
+	color: #e4e4e4;
+}
+
+
+        /* 适配手机端样式 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+                padding-bottom: 15px;
+            }
+
+            .container {
+                grid-template-columns: 1fr; /* 单列布局 */
+                gap: 15px;
+                padding: 10px;
+            }
+
+            .card img {
+                height: 200px; /* 缩小图片高度 */
+            }
+
+            .card-content h3 {
+                font-size: 1.5em;
+            }
+
+            .card-content a {
+                width: 100%; /* 按钮全宽 */
+                padding: 8px 0;
+            }
+
+            .toast {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+        
+        
+@keyframes card-shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake {
+    animation: card-shake 0.5s; /* 抖动时间 */
+    animation-timing-function: ease-in-out;
+}
+
+    </style>
+    <script>
+       function copyToClipboard(text, cardElement) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    playAudio('/mp3/wow.mp3');
+                    triggerCardShake(cardElement);
+                    refreshCardImage(cardElement);
+                })
+                .catch(() => {
+                    console.error('复制失败');
+                });
+        }
+
+function refreshCardImage(cardElement) {
+    const img = cardElement.querySelector('img');
+    const apiUrl = cardElement.querySelector('.card-content a').getAttribute('data-api-url');
+
+    // 生成一个随机的 postId，范围是 1 到 666666
+    const postId = Math.floor(Math.random() * 666666) + 1;
+
+    // 在基础 URL 后添加 postId 参数
+    img.src = `${apiUrl}?postId=${postId}`;
+}
+
+        function playAudio(audioUrl) {
+            const audio = new Audio(audioUrl);
+            audio.play();
+        }
+
+        function triggerCardShake(cardElement) {
+            cardElement.classList.add('shake');
+            setTimeout(() => {
+                cardElement.classList.remove('shake');
+            }, 500);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.card').forEach(card => {
+                const button = card.querySelector('.card-content a');
+                button.addEventListener('click', () => {
+                    const textToCopy = button.getAttribute('data-copy-text');
+                    copyToClipboard(textToCopy, card);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Dark.Lotus.Random</h1>
+    <h2>"Live Preview"</h2>
+
+    <div class="container">
+
+<div class="card">
+    <a href="https://img.darklotus.cn/random" target="_blank">
+        <img src="https://img.darklotus.cn/random" alt="API预览">
+    </a>
+    <div class="card-content">
+        <h3>动漫随机</h3>
+        <p>立即获取一张随机二次元图片!</p>
+        <a data-copy-text="https://img.darklotus.cn/random" data-api-url="https://img.darklotus.cn/random" href="javascript:void(0);">点击食用</a>
+    </div>
+</div>
+
+        
+        <div class="card">
+            <a href="https://img.darklotus.cn/day" target="_blank">
+                <img src="https://img.darklotus.cn/day" alt="API预览">
+            </a>
+            <div class="card-content">
+                <h3>每日一图</h3>
+                <p>每日从动漫随机挑选一张图维持24小时</p>
+                <a data-copy-text="https://img.darklotus.cn/day" data-api-url="https://img.darklotus.cn/day" href="javascript:void(0);">点击食用</a>
+            </div>
+        </div>
+        
+<div class="card">
+    <a href="https://img.darklotus.cn/gif" target="_blank">
+        <img src="https://img.darklotus.cn/gif" alt="API预览">
+    </a>
+    <div class="card-content">
+        <h3>动态壁纸</h3>
+        <p>提供动态的壁纸图片</p>
+        <a data-copy-text="https://img.darklotus.cn/gif" data-api-url="https://img.darklotus.cn/gif" href="javascript:void(0);">点击食用</a>
+    </div>
+</div>
+        
+                <div class="card">
+            <a href="https://img.darklotus.cn/4k" target="_blank">
+                <img src="https://img.darklotus.cn/4k" alt="API预览">
+            </a>
+            <div class="card-content">
+                <h3>4K壁纸</h3>
+                <p>立即获取一张随机4K壁纸!</p>
+                <a data-copy-text="https://img.darklotus.cn/4k" data-api-url="https://img.darklotus.cn/4k" href="javascript:void(0);">点击食用</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <a href="https://img.darklotus.cn/mobile" target="_blank">
+                <img src="https://img.darklotus.cn/mobile" alt="API预览">
+            </a>
+            <div class="card-content">
+                <h3>手机壁纸</h3>
+                <p>立即获取一张随机手机壁纸!</p>
+                <a data-copy-text="https://img.darklotus.cn/mobile" data-api-url="https://img.darklotus.cn/mobile" href="javascript:void(0);">点击食用</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <a href="https://img.darklotus.cn/avatar" target="_blank">
+                <img src="https://img.darklotus.cn/avatar" alt="API预览">
+            </a>
+            <div class="card-content">
+                <h3>动态头像</h3>
+                <p>立即获取一张随机炫酷的动态的头像！</p>
+                <a data-copy-text="https://img.darklotus.cn/avatar" data-api-url="https://img.darklotus.cn/avatar" href="javascript:void(0);">点击食用</a>
+        </div>
+        </div>
+        
+                <div class="card">
+            <a href="https://img.darklotus.cn/bd" target="_blank">
+                <img src="https://img.darklotus.cn/bd" alt="API预览">
+            </a>
+            <div class="card-content">
+                <h3>动漫白底</h3>
+                <p>立即获取一张随机动漫白底图片!</p>
+                <a data-copy-text="https://img.darklotus.cn/bd" data-api-url="https://img.darklotus.cn/bd" href="javascript:void(0);">点击食用</a>
+    </div>
+
+        
+                
+
+        
+        
+        
+
+        <!-- 你可以复制并修改以下代码块来添加更多的API卡片 -->
+        <!--
+        <div class="card">
+            <img src="https://img.darklotus.cn/random" alt="API预览">
+            <div class="card-content">
+                <h3>API 标题</h3>
+                <p>API 描述信息。</p>
+                <a onclick="copyToClipboard('API 地址')">点击复制API地址</a>
+            </div>
+        </div>
+        -->
+    </div>
+
+</div>
+<footer id="footer" class="footer hidden">
+    <p>Copyright © 2023 - 2024 <a href="https://blog.darklotus.cn/">Dark.Lotus</a> Inc. All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
